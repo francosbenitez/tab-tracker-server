@@ -1,20 +1,22 @@
-const express = require("express")
-const cors = require("cors")
-const morgan = require("morgan")
+const express = require('express')
+const cors = require('cors')
+const morgan = require('morgan')
+const db = require('./models')
+const config = require('./config')
 
 const app = express()
 app.use(morgan('combined'))
 app.use(express.json());
 app.use(cors())
 
-const PORT = process.env.PORT || 8081
+require('./routes')(app)
 
-app.post("/register", (req, res) => {
-    res.send({
-        message: `Hello ${req.body.email}! Your user was registered! Have fun!`
-    })
+db.sequelize.sync({ force: true })
+    .then(() => {
+    console.log("Drop and re-sync db.");
+  });
+    
+app.listen(config.PORT, () => {
+    console.log(`Server is running on port http://localhost:${config.PORT}/`);
 })
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port http://localhost:${PORT}/`);
-  });
