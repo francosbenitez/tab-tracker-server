@@ -29,5 +29,6 @@ db.sequelize = sequelize
 db.Sequelize = Sequelize
 
 db.user = require('./User')(sequelize, Sequelize);
+db.song = require('./Songs')(sequelize, Sequelize);
 
 module.exports = db
