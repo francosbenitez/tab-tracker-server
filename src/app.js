@@ -11,9 +11,9 @@ app.use(cors())
 
 require('./routes')(app)
 
-db.sequelize.sync({ force: true })
+db.sequelize.sync({ force: false })
     .then(() => {
-    console.log("Drop and re-sync db.");
+    //console.log("Drop and re-sync db.");
   });
     
 app.listen(config.PORT, () => {
