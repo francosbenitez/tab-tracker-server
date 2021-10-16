@@ -25,11 +25,11 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
 // db[model.name] = model
 // })
 
-Object.keys(db).forEach(function (modelName) {
-  if ('associate' in db[modelName]) {
-    db[modelName].associate(db)
-  }
-})
+// Object.keys(db).forEach(function (modelName) {
+//   if ('associate' in db[modelName]) {
+//     db[modelName].associate(db)
+//   }
+// })
 
 db.sequelize = sequelize
 db.Sequelize = Sequelize
@@ -37,5 +37,8 @@ db.Sequelize = Sequelize
 db.user = require('./User')(sequelize, Sequelize);
 db.song = require('./Songs')(sequelize, Sequelize);
 db.bookmark = require('./Bookmark')(sequelize, Sequelize);
+
+db.bookmark.belongsTo(db.user)
+db.bookmark.belongsTo(db.song)
 
 module.exports = db
