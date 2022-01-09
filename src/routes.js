@@ -4,31 +4,31 @@ const SongsController = require('./controllers/SongsController')
 const BookmarksController = require('./controllers/BookmarksController.js')
 
 module.exports = (app) => {
-    app.post("/register", 
-        AuthenticationControllerPolicy.register,
-        AuthenticationController.register)
+  app.post("/register", 
+    AuthenticationControllerPolicy.register,
+    AuthenticationController.register)
 
-    app.post("/login", 
-        AuthenticationController.login)
+  app.post("/login", 
+    AuthenticationController.login)
 
-    app.get("/songs", 
-        SongsController.index)
+  app.get("/songs", 
+    SongsController.index)
 
-    app.get('/songs/:songId',
-        SongsController.show)
+  app.get('/songs/:songId',
+    SongsController.show)
 
-    app.post("/songs", 
-        SongsController.post)
+  app.post("/songs", 
+    SongsController.post)
 
-    app.put("/songs/:songId", 
-        SongsController.put)
+  app.put("/songs/:songId", 
+    SongsController.put)
 
-    app.get('/bookmarks',
-        BookmarksController.index)
+  app.get('/bookmarks',
+    BookmarksController.index)
 
-    app.post('/bookmarks',
-        BookmarksController.post)
+  app.post('/bookmarks',
+    BookmarksController.post)
 
-    app.delete('/bookmarks/:bookmarkId',
-        BookmarksController.delete)
+  app.delete('/bookmarks/:bookmarkId',
+    BookmarksController.delete)
 }

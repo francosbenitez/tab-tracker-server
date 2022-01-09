@@ -9,7 +9,7 @@ const songs = require('./songs.json')
 const users = require('./users.json')
 const bookmark = require('./bookmark.json')
 
-db.sequelize.sync({force: true})
+db.sequelize.sync({ force: true })
   .then(async function () {
     await Promise.all(
       users.map(user => {
