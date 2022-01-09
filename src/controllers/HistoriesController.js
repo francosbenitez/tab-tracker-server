@@ -17,7 +17,7 @@ module.exports = {
             }
           ]
         })
-        res.send(histories)
+        res.send(_.uniqBy(histories, history => history.SongId)) // Add 'uniqBy' for not returning the same objects (duplicated values)
       } catch (err) {
         console.log(err)
         res.status(500).send({
