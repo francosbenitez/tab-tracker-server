@@ -29,6 +29,8 @@
     "morgan": "^1.10.0",
     "mysql2": "^2.3.0",
     "nodemon": "^2.0.13",
+    "passport": "^0.5.2",
+    "passport-jwt": "^4.0.0",
     "sequelize": "^6.7.0"
   },
   "devDependencies": {
