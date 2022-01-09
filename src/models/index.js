@@ -37,8 +37,12 @@ db.Sequelize = Sequelize
 db.user = require('./User')(sequelize, Sequelize);
 db.song = require('./Songs')(sequelize, Sequelize);
 db.bookmark = require('./Bookmark')(sequelize, Sequelize);
+db.history = require('./History')(sequelize, Sequelize);
 
 db.bookmark.belongsTo(db.user)
 db.bookmark.belongsTo(db.song)
+
+db.history.belongsTo(db.user)
+db.history.belongsTo(db.song)
 
 module.exports = db
